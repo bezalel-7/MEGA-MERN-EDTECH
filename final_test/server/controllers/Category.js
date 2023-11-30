@@ -64,6 +64,7 @@ exports.categoryPageDetails = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Category not found" })
     }
+    console.log("ffirst check point")
     // Handle the case when there are no courses
     if (selectedCategory.courses.length === 0) {
       console.log("No courses found for the selected category.")
@@ -86,7 +87,7 @@ exports.categoryPageDetails = async (req, res) => {
         match: { status: "Published" },
       })
       .exec()
-    console.log()
+    console.log("second checkout point")
     // Get top-selling courses across all categories
     const allCategories = await Category.find()
       .populate({
