@@ -19,7 +19,7 @@ import { ratingsEndpoints } from "../../services/apis"
 
 function ReviewSlider() {
   const [reviews, setReviews] = useState([])
-  const truncateWords = 15
+  const truncateWords = 10
 
   useEffect(() => {
     ;(async () => {
@@ -44,16 +44,16 @@ function ReviewSlider() {
           loop={true}
           freeMode={true}
           autoplay={{
-            delay: 2500,
+            delay: 3,
             disableOnInteraction: false,
           }}
           modules={[FreeMode, Pagination, Autoplay]}
           className="w-full "
-        >
+        > 
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+                <div className="flex flex-col w-[300px] h-[200px] bg-richblack-800 p-3 text-[14px] text-richblack-25">
                   <div className="flex items-center gap-4">
                     <img
                       src={
@@ -93,11 +93,15 @@ function ReviewSlider() {
                       fullIcon={<FaStar />}
                     />
                   </div>
-                </div>
+                </div> 
               </SwiperSlide>
             )
           })}
-          {/* <SwiperSlide>Slide 1</SwiperSlide> */}
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 1</SwiperSlide>
         </Swiper>
       </div>
     </div>
