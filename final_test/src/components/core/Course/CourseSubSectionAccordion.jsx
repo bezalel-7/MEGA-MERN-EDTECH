@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
-import { AiOutlineDown } from "react-icons/ai"
-import { HiOutlineVideoCamera } from "react-icons/hi"
+import { HiOutlineVideoCamera } from 'react-icons/hi'
 
 function CourseSubSectionAccordion({ subSec }) {
   return (

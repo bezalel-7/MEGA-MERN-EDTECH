@@ -1,13 +1,13 @@
-import React from "react"
-import copy from "copy-to-clipboard"
-import { toast } from "react-hot-toast"
-import { BsFillCaretRightFill } from "react-icons/bs"
-import { FaShareSquare } from "react-icons/fa"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import React from 'react'
+import copy from 'copy-to-clipboard'
+import { toast } from 'react-hot-toast'
+import { BsFillCaretRightFill } from 'react-icons/bs'
+import { FaShareSquare } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { addToCart } from "../../../slices/cartSlice"
-import { ACCOUNT_TYPE } from "../../../utils/constants"
+import { addToCart } from '../../../slices/cartSlice'
+import { ACCOUNT_TYPE } from '../../../utils/constants'
 
 // const CourseIncludes = [
 //   "8 hours on-demand video",
@@ -22,15 +22,11 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {
-    thumbnail: ThumbnailImage,
-    price: CurrentPrice,
-    _id: courseId,
-  } = course
+  const { thumbnail: ThumbnailImage, price: CurrentPrice } = course
 
   const handleShare = () => {
     copy(window.location.href)
-    toast.success("Link copied to clipboard")
+    toast.success('Link copied to clipboard')
   }
 
   const handleAddToCart = () => {
@@ -43,11 +39,11 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
       return
     }
     setConfirmationModal({
-      text1: "You are not logged in!",
-      text2: "Please login to add To Cart",
-      btn1Text: "Login",
-      btn2Text: "Cancel",
-      btn1Handler: () => navigate("/login"),
+      text1: 'You are not logged in!',
+      text2: 'Please login to add To Cart',
+      btn1Text: 'Login',
+      btn2Text: 'Cancel',
+      btn1Handler: () => navigate('/login'),
       btn2Handler: () => setConfirmationModal(null),
     })
   }
@@ -75,13 +71,13 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
               className="yellowButton"
               onClick={
                 user && course?.studentsEnroled.includes(user?._id)
-                  ? () => navigate("/dashboard/enrolled-courses")
+                  ? () => navigate('/dashboard/enrolled-courses')
                   : handleBuyCourse
               }
             >
               {user && course?.studentsEnroled.includes(user?._id)
-                ? "Go To Course"
-                : "Buy Now"}
+                ? 'Go To Course'
+                : 'Buy Now'}
             </button>
             {(!user || !course?.studentsEnroled.includes(user?._id)) && (
               <button onClick={handleAddToCart} className="blackButton">

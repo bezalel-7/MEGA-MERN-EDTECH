@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router-dom"
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import "video-react/dist/video-react.css"
-import { useLocation } from "react-router-dom"
-import { BigPlayButton, Player } from "video-react"
+import 'video-react/dist/video-react.css'
+import { useLocation } from 'react-router-dom'
+import { BigPlayButton, Player } from 'video-react'
 
-import { markLectureAsComplete } from "../../../services/operations/courseDetailsAPI"
-import { updateCompletedLectures } from "../../../slices/viewCourseSlice"
-import IconBtn from "../../Common/IconBtn"
+import { markLectureAsComplete } from '../../../services/operations/courseDetailsAPI'
+import { updateCompletedLectures } from '../../../slices/viewCourseSlice'
+import IconBtn from '../../Common/IconBtn'
 
 const VideoDetails = () => {
   const { courseId, sectionId, subSectionId } = useParams()
@@ -17,11 +17,14 @@ const VideoDetails = () => {
   const playerRef = useRef(null)
   const dispatch = useDispatch()
   const { token } = useSelector((state) => state.auth)
-  const { courseSectionData, courseEntireData, completedLectures } =
-    useSelector((state) => state.viewCourse)
+  const {
+    courseSectionData,
+    courseEntireData,
+    completedLectures,
+  } = useSelector((state) => state.viewCourse)
 
   const [videoData, setVideoData] = useState([])
-  const [previewSource, setPreviewSource] = useState("")
+  const [previewSource, setPreviewSource] = useState('')
   const [videoEnded, setVideoEnded] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -33,11 +36,11 @@ const VideoDetails = () => {
       } else {
         // console.log("courseSectionData", courseSectionData)
         const filteredData = courseSectionData.filter(
-          (course) => course._id === sectionId
+          (course) => course._id === sectionId,
         )
         // console.log("filteredData", filteredData)
         const filteredVideoData = filteredData?.[0]?.subSection.filter(
-          (data) => data._id === subSectionId
+          (data) => data._id === subSectionId,
         )
         // console.log("filteredVideoData", filteredVideoData)
         setVideoData(filteredVideoData[0])
@@ -50,7 +53,7 @@ const VideoDetails = () => {
   // check if the lecture is the first video of the course
   const isFirstVideo = () => {
     const currentSectionIndx = courseSectionData.findIndex(
-      (data) => data._id === sectionId
+      (data) => data._id === sectionId,
     )
 
     const currentSubSectionIndx = courseSectionData[
@@ -69,7 +72,7 @@ const VideoDetails = () => {
     // console.log(courseSectionData)
 
     const currentSectionIndx = courseSectionData.findIndex(
-      (data) => data._id === sectionId
+      (data) => data._id === sectionId,
     )
 
     const noOfSubsections =
@@ -87,14 +90,14 @@ const VideoDetails = () => {
           currentSubSectionIndx + 1
         ]._id
       navigate(
-        `/view-course/${courseId}/section/${sectionId}/sub-section/${nextSubSectionId}`
+        `/view-course/${courseId}/section/${sectionId}/sub-section/${nextSubSectionId}`,
       )
     } else {
       const nextSectionId = courseSectionData[currentSectionIndx + 1]._id
       const nextSubSectionId =
         courseSectionData[currentSectionIndx + 1].subSection[0]._id
       navigate(
-        `/view-course/${courseId}/section/${nextSectionId}/sub-section/${nextSubSectionId}`
+        `/view-course/${courseId}/section/${nextSectionId}/sub-section/${nextSubSectionId}`,
       )
     }
   }
@@ -102,7 +105,7 @@ const VideoDetails = () => {
   // check if the lecture is the last video of the course
   const isLastVideo = () => {
     const currentSectionIndx = courseSectionData.findIndex(
-      (data) => data._id === sectionId
+      (data) => data._id === sectionId,
     )
 
     const noOfSubsections =
@@ -127,7 +130,7 @@ const VideoDetails = () => {
     // console.log(courseSectionData)
 
     const currentSectionIndx = courseSectionData.findIndex(
-      (data) => data._id === sectionId
+      (data) => data._id === sectionId,
     )
 
     const currentSubSectionIndx = courseSectionData[
@@ -140,7 +143,7 @@ const VideoDetails = () => {
           currentSubSectionIndx - 1
         ]._id
       navigate(
-        `/view-course/${courseId}/section/${sectionId}/sub-section/${prevSubSectionId}`
+        `/view-course/${courseId}/section/${sectionId}/sub-section/${prevSubSectionId}`,
       )
     } else {
       const prevSectionId = courseSectionData[currentSectionIndx - 1]._id
@@ -151,7 +154,7 @@ const VideoDetails = () => {
           prevSubSectionLength - 1
         ]._id
       navigate(
-        `/view-course/${courseId}/section/${prevSectionId}/sub-section/${prevSubSectionId}`
+        `/view-course/${courseId}/section/${prevSectionId}/sub-section/${prevSubSectionId}`,
       )
     }
   }
@@ -160,7 +163,7 @@ const VideoDetails = () => {
     setLoading(true)
     const res = await markLectureAsComplete(
       { courseId: courseId, subsectionId: subSectionId },
-      token
+      token,
     )
     if (res) {
       dispatch(updateCompletedLectures(subSectionId))
@@ -190,7 +193,7 @@ const VideoDetails = () => {
             <div
               style={{
                 backgroundImage:
-                  "linear-gradient(to top, rgb(0, 0, 0), rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.1)",
+                  'linear-gradient(to top, rgb(0, 0, 0), rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.1)',
               }}
               className="full absolute inset-0 z-[100] grid h-full place-content-center font-inter"
             >
@@ -198,7 +201,7 @@ const VideoDetails = () => {
                 <IconBtn
                   disabled={loading}
                   onclick={() => handleLectureCompletion()}
-                  text={!loading ? "Mark As Completed" : "Loading..."}
+                  text={!loading ? 'Mark As Completed' : 'Loading...'}
                   customClasses="text-xl max-w-max px-4 mx-auto"
                 />
               )}

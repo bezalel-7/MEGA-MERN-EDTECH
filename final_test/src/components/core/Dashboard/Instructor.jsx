@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
-
-import { fetchInstructorCourses } from "../../../services/operations/courseDetailsAPI"
-import { getInstructorData } from "../../../services/operations/profileAPI"
-import InstructorChart from "./InstructorDashboard/InstructorChart"
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { fetchInstructorCourses } from '../../../services/operations/courseDetailsAPI'
+import { getInstructorData } from '../../../services/operations/profileAPI'
+import InstructorChart from './InstructorDashboard/InstructorChart'
 
 export default function Instructor() {
   const { token } = useSelector((state) => state.auth)
@@ -29,12 +28,12 @@ export default function Instructor() {
 
   const totalAmount = instructorData?.reduce(
     (acc, curr) => acc + curr.totalAmountGenerated,
-    0
+    0,
   )
 
   const totalStudents = instructorData?.reduce(
     (acc, curr) => acc + curr.totalStudentsEnrolled,
-    0
+    0,
   )
 
   return (

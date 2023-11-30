@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
-import { toast } from "react-hot-toast"
-import { RxCross2 } from "react-icons/rx"
-import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-hot-toast'
+import { RxCross2 } from 'react-icons/rx'
+import { useDispatch, useSelector } from 'react-redux'
 
 import {
   createSubSection,
   updateSubSection,
-} from "../../../../../services/operations/courseDetailsAPI"
-import { setCourse } from "../../../../../slices/courseSlice"
-import IconBtn from "../../../../Common/IconBtn"
-import Upload from "../Upload"
+} from '../../../../../services/operations/courseDetailsAPI'
+import { setCourse } from '../../../../../slices/courseSlice'
+import IconBtn from '../../../../Common/IconBtn'
+import Upload from '../Upload'
 
 export default function SubSectionModal({
   modalData,
@@ -39,9 +39,9 @@ export default function SubSectionModal({
   useEffect(() => {
     if (view || edit) {
       // console.log("modalData", modalData)
-      setValue("lectureTitle", modalData.title)
-      setValue("lectureDesc", modalData.description)
-      setValue("lectureVideo", modalData.videoUrl)
+      setValue('lectureTitle', modalData.title)
+      setValue('lectureDesc', modalData.description)
+      setValue('lectureVideo', modalData.videoUrl)
     }
   }, [])
 
@@ -65,16 +65,16 @@ export default function SubSectionModal({
     // console.log("changes after editing form values:", currentValues)
     const formData = new FormData()
     // console.log("Values After Editing form values:", currentValues)
-    formData.append("sectionId", modalData.sectionId)
-    formData.append("subSectionId", modalData._id)
+    formData.append('sectionId', modalData.sectionId)
+    formData.append('subSectionId', modalData._id)
     if (currentValues.lectureTitle !== modalData.title) {
-      formData.append("title", currentValues.lectureTitle)
+      formData.append('title', currentValues.lectureTitle)
     }
     if (currentValues.lectureDesc !== modalData.description) {
-      formData.append("description", currentValues.lectureDesc)
+      formData.append('description', currentValues.lectureDesc)
     }
     if (currentValues.lectureVideo !== modalData.videoUrl) {
-      formData.append("video", currentValues.lectureVideo)
+      formData.append('video', currentValues.lectureVideo)
     }
     setLoading(true)
     const result = await updateSubSection(formData, token)
@@ -82,7 +82,7 @@ export default function SubSectionModal({
       // console.log("result", result)
       // update the structure of course
       const updatedCourseContent = course.courseContent.map((section) =>
-        section._id === modalData.sectionId ? result : section
+        section._id === modalData.sectionId ? result : section,
       )
       const updatedCourse = { ...course, courseContent: updatedCourseContent }
       dispatch(setCourse(updatedCourse))
@@ -97,7 +97,7 @@ export default function SubSectionModal({
 
     if (edit) {
       if (!isFormUpdated()) {
-        toast.error("No changes made to the form")
+        toast.error('No changes made to the form')
       } else {
         handleEditSubsection()
       }
@@ -105,16 +105,16 @@ export default function SubSectionModal({
     }
 
     const formData = new FormData()
-    formData.append("sectionId", modalData)
-    formData.append("title", data.lectureTitle)
-    formData.append("description", data.lectureDesc)
-    formData.append("video", data.lectureVideo)
+    formData.append('sectionId', modalData)
+    formData.append('title', data.lectureTitle)
+    formData.append('description', data.lectureDesc)
+    formData.append('video', data.lectureVideo)
     setLoading(true)
     const result = await createSubSection(formData, token)
     if (result) {
       // update the structure of course
       const updatedCourseContent = course.courseContent.map((section) =>
-        section._id === modalData ? result : section
+        section._id === modalData ? result : section,
       )
       const updatedCourse = { ...course, courseContent: updatedCourseContent }
       dispatch(setCourse(updatedCourse))
@@ -129,7 +129,7 @@ export default function SubSectionModal({
         {/* Modal Header */}
         <div className="flex items-center justify-between rounded-t-lg bg-richblack-700 p-5">
           <p className="text-xl font-semibold text-richblack-5">
-            {view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture
+            {view && 'Viewing'} {add && 'Adding'} {edit && 'Editing'} Lecture
           </p>
           <button onClick={() => (!loading ? setModalData(null) : {})}>
             <RxCross2 className="text-2xl text-richblack-5" />
@@ -160,7 +160,7 @@ export default function SubSectionModal({
               disabled={view || loading}
               id="lectureTitle"
               placeholder="Enter Lecture Title"
-              {...register("lectureTitle", { required: true })}
+              {...register('lectureTitle', { required: true })}
               className="form-style w-full"
             />
             {errors.lectureTitle && (
@@ -172,14 +172,14 @@ export default function SubSectionModal({
           {/* Lecture Description */}
           <div className="flex flex-col space-y-2">
             <label className="text-sm text-richblack-5" htmlFor="lectureDesc">
-              Lecture Description{" "}
+              Lecture Description{' '}
               {!view && <sup className="text-pink-200">*</sup>}
             </label>
             <textarea
               disabled={view || loading}
               id="lectureDesc"
               placeholder="Enter Lecture Description"
-              {...register("lectureDesc", { required: true })}
+              {...register('lectureDesc', { required: true })}
               className="form-style resize-x-none min-h-[130px] w-full"
             />
             {errors.lectureDesc && (
@@ -192,7 +192,7 @@ export default function SubSectionModal({
             <div className="flex justify-end">
               <IconBtn
                 disabled={loading}
-                text={loading ? "Loading.." : edit ? "Save Changes" : "Save"}
+                text={loading ? 'Loading..' : edit ? 'Save Changes' : 'Save'}
               />
             </div>
           )}

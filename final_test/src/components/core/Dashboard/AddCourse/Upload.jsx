@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react"
-import { useDropzone } from "react-dropzone"
-import { FiUploadCloud } from "react-icons/fi"
-import { useSelector } from "react-redux"
+import { useEffect, useRef, useState } from 'react'
+import { useDropzone } from 'react-dropzone'
+import { FiUploadCloud } from 'react-icons/fi'
+import { useSelector } from 'react-redux'
 
-import "video-react/dist/video-react.css"
-import { Player } from "video-react"
+import 'video-react/dist/video-react.css'
+import { Player } from 'video-react'
 
 export default function Upload({
   name,
@@ -16,10 +16,10 @@ export default function Upload({
   viewData = null,
   editData = null,
 }) {
-  const { course } = useSelector((state) => state.course)
+  // const { course } = useSelector((state) => state.course)
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewSource, setPreviewSource] = useState(
-    viewData ? viewData : editData ? editData : ""
+    viewData ? viewData : editData ? editData : '',
   )
   const inputRef = useRef(null)
 
@@ -33,8 +33,8 @@ export default function Upload({
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: !video
-      ? { "image/*": [".jpeg", ".jpg", ".png"] }
-      : { "video/*": [".mp4"] },
+      ? { 'image/*': ['.jpeg', '.jpg', '.png'] }
+      : { 'video/*': ['.mp4'] },
     onDrop,
   })
 
@@ -64,7 +64,7 @@ export default function Upload({
       </label>
       <div
         className={`${
-          isDragActive ? "bg-richblack-600" : "bg-richblack-700"
+          isDragActive ? 'bg-richblack-600' : 'bg-richblack-700'
         } flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
       >
         {previewSource ? (
@@ -82,7 +82,7 @@ export default function Upload({
               <button
                 type="button"
                 onClick={() => {
-                  setPreviewSource("")
+                  setPreviewSource('')
                   setSelectedFile(null)
                   setValue(name, null)
                 }}
@@ -102,7 +102,7 @@ export default function Upload({
               <FiUploadCloud className="text-2xl text-yellow-50" />
             </div>
             <p className="mt-2 max-w-[200px] text-center text-sm text-richblack-200">
-              Drag and drop an {!video ? "image" : "video"}, or click to{" "}
+              Drag and drop an {!video ? 'image' : 'video'}, or click to{' '}
               <span className="font-semibold text-yellow-50">Browse</span> a
               file
             </p>

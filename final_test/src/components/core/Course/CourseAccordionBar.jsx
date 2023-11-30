@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react"
-import { AiOutlineDown } from "react-icons/ai"
+import { useEffect, useRef, useState } from 'react'
+import { AiOutlineDown } from 'react-icons/ai'
 
-import CourseSubSectionAccordion from "./CourseSubSectionAccordion"
+import CourseSubSectionAccordion from './CourseSubSectionAccordion'
 
 export default function CourseAccordionBar({ course, isActive, handleActive }) {
   const contentEl = useRef(null)
@@ -28,7 +28,7 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
           <div className="flex items-center gap-2">
             <i
               className={
-                isActive.includes(course._id) ? "rotate-180" : "rotate-0"
+                isActive.includes(course._id) ? 'rotate-180' : 'rotate-0'
               }
             >
               <AiOutlineDown />

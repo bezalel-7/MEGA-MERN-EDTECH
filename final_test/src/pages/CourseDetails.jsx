@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react"
-import { BiInfoCircle } from "react-icons/bi"
-import { HiOutlineGlobeAlt } from "react-icons/hi"
-import { ReactMarkdown } from "react-markdown/lib/react-markdown"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router-dom"
+import React, { useEffect, useState } from 'react'
+import { BiInfoCircle } from 'react-icons/bi'
+import { HiOutlineGlobeAlt } from 'react-icons/hi'
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import ConfirmationModal from "../components/Common/ConfirmationModal"
-import Footer from "../components/Common/Footer"
-import RatingStars from "../components/Common/RatingStars"
-import CourseAccordionBar from "../components/core/Course/CourseAccordionBar"
-import CourseDetailsCard from "../components/core/Course/CourseDetailsCard"
-import { formatDate } from "../services/formatDate"
-import { fetchCourseDetails } from "../services/operations/courseDetailsAPI"
-import { BuyCourse } from "../services/operations/studentFeaturesAPI"
-import GetAvgRating from "../utils/avgRating"
-import Error from "./Error"
+import ConfirmationModal from '../components/Common/ConfirmationModal'
+import Footer from '../components/Common/Footer'
+import RatingStars from '../components/Common/RatingStars'
+import CourseAccordionBar from '../components/core/Course/CourseAccordionBar'
+import CourseDetailsCard from '../components/core/Course/CourseDetailsCard'
+import { formatDate } from '../services/formatDate'
+import { fetchCourseDetails } from '../services/operations/courseDetailsAPI'
+import { BuyCourse } from '../services/operations/studentFeaturesAPI'
+import GetAvgRating from '../utils/avgRating'
+import Error from './Error'
 
 function CourseDetails() {
   const { user } = useSelector((state) => state.profile)
@@ -39,7 +39,7 @@ function CourseDetails() {
         // console.log("course details res: ", res)
         setResponse(res)
       } catch (error) {
-        console.log("Could not fetch Course Details")
+        console.log('Could not fetch Course Details')
       }
     })()
   }, [courseId])
@@ -62,7 +62,7 @@ function CourseDetails() {
     setIsActive(
       !isActive.includes(id)
         ? isActive.concat([id])
-        : isActive.filter((e) => e != id)
+        : isActive.filter((e) => e !== id),
     )
   }
 
@@ -88,7 +88,7 @@ function CourseDetails() {
   }
 
   const {
-    _id: course_id,
+    // _id: course_id,
     courseName,
     courseDescription,
     thumbnail,
@@ -107,11 +107,11 @@ function CourseDetails() {
       return
     }
     setConfirmationModal({
-      text1: "You are not logged in!",
-      text2: "Please login to Purchase Course.",
-      btn1Text: "Login",
-      btn2Text: "Cancel",
-      btn1Handler: () => navigate("/login"),
+      text1: 'You are not logged in!',
+      text2: 'Please login to Purchase Course.',
+      btn1Text: 'Login',
+      btn2Text: 'Cancel',
+      btn1Handler: () => navigate('/login'),
       btn2Handler: () => setConfirmationModal(null),
     })
   }
@@ -161,11 +161,11 @@ function CourseDetails() {
               </div>
               <div className="flex flex-wrap gap-5 text-lg">
                 <p className="flex items-center gap-2">
-                  {" "}
+                  {' '}
                   <BiInfoCircle /> Created at {formatDate(createdAt)}
                 </p>
                 <p className="flex items-center gap-2">
-                  {" "}
+                  {' '}
                   <HiOutlineGlobeAlt /> English
                 </p>
               </div>
