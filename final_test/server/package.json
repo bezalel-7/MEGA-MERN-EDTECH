@@ -10,7 +10,7 @@
 	"keywords": [
 		"SkillMaster-backend"
 	],
-	"author": "Saikat Mukherjee",
+	"author": "varadudi",
 	"license": "ISC",
 	"dependencies": {
 		"bcrypt": "^5.1.0",
