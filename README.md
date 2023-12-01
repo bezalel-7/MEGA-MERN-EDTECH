@@ -35,11 +35,12 @@ The SkillMaster ed-tech platform consists of three main components: the front en
 The front-end is built using ReactJS, allowing for dynamic and responsive user interfaces. It communicates with the back-end using RESTful API calls.
 
 ##### Front End Pages
+![mainpage](https://github.com/bezalel-7/MEGA-MERN-EDTECH/assets/94173498/c6660052-6f5c-405f-8b98-211d43966677)
 
 For Students:
 - Homepage
 - **Homepage:** A brief introduction to the platform with links to the course list and user details.
-- ![Homepage frontend](https://raw.githubusercontent.com/bezalel-7/MEGA-MERN-EDTECH/main/final_test/images/mainpage.jpg)
+
 - **Course List:** A list of all the courses available on the platform, along with their descriptions and ratings.
 - **Wishlist:** Displays all the courses that a student has added to their wishlist.
 - **Cart Checkout:** Allows the user to complete course purchases.
@@ -80,11 +81,13 @@ Data models include Student Schema, Instructor Schema, and Course Schema.
 
 The database is built using MongoDB, providing a flexible and scalable data storage solution.
 
-![Database Schema](final_test/images/schema.png)
+![schema](https://github.com/bezalel-7/MEGA-MERN-EDTECH/assets/94173498/c30e640d-416e-4926-ac09-694c9e1835ec)
+
 
 ### Architecture Diagram
+![architecture](https://github.com/bezalel-7/MEGA-MERN-EDTECH/assets/94173498/d4cc6d64-19cb-4a76-bdb6-f3dde2eb59a0)
 
-![Architecture](final_test/images/architecture.png)
+
 
 ## API Design
 
@@ -114,5 +117,17 @@ For detailed API documentation and endpoints, refer to the [API Documentation](/
 Access the application in your browser at `http://localhost:3000`.
 
 In conclusion, SkillMaster offers a comprehensive learning experience for students and a platform for instructors to showcase their expertise. The technical details outlined above provide insights into the platform's architecture, features, and functionalities.
+
+## Feel Free to Contribute
+
+If you find any issues or have ideas for improvements, feel free to contribute! You can:
+
+- Open an [issue](https://github.com/bezalel-7/MEGA-MERN-EDTECH/issues) to report a bug or suggest a new feature.
+- Fork the repository and submit a [pull request](https://github.com/bezalel-7/MEGA-MERN-EDTECH/pulls) to contribute directly to the project.
+
+For questions or discussions, you can reach out to me at varadudi18@gmail.com.
+
+Let's make SkillMaster even better together!
+
 
 
