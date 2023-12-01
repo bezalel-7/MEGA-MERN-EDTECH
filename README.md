@@ -39,7 +39,7 @@ The front-end is built using ReactJS, allowing for dynamic and responsive user i
 For Students:
 - Homepage
 - **Homepage:** A brief introduction to the platform with links to the course list and user details.
-- ![Homepage frontend](final_test/images/mainpage.jpg)
+- ![Homepage frontend](https://raw.githubusercontent.com/bezalel-7/MEGA-MERN-EDTECH/main/final_test/images/mainpage.jpg)
 - **Course List:** A list of all the courses available on the platform, along with their descriptions and ratings.
 - **Wishlist:** Displays all the courses that a student has added to their wishlist.
 - **Cart Checkout:** Allows the user to complete course purchases.
